@@ -10,7 +10,7 @@ run-command apt-get clean && rm -rf /var/lib/apt/lists/*
 run-command update-grub
 
 run-command systemctl enable docker
-run-command systemctl enable sshd
+run-command systemctl enable ssh
 
 # Truncate machine-id
 run-command truncate -s 0 /etc/machine-id
