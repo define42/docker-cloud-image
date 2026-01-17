@@ -64,7 +64,7 @@ jobs:
       - name: Stamp release image filename
         if: github.event_name == 'push' && steps.tag.outputs.new_tag != ''
         run: |
-          mv ubuntu-24.04-minimal-cloudimg-amd64.img ubuntu-24.04-minimal-cloudimg-amd64-${{ steps.tag.outputs.new_tag }}.img
+          mv ubuntu-24.04-minimal-cloudimg-amd64.img docker-cloud-image-amd64-${{ steps.tag.outputs.new_tag }}.img
           ls -la
 
       - name: Create GitHub release
@@ -74,4 +74,4 @@ jobs:
           tag: ${{ steps.tag.outputs.new_tag }}
           name: Release ${{ steps.tag.outputs.new_tag }}
           body: ${{ steps.tag.outputs.changelog }}
-          artifacts: ubuntu-24.04-minimal-cloudimg-amd64-${{ steps.tag.outputs.new_tag }}.img
+          artifacts: docker-cloud-image-amd64-${{ steps.tag.outputs.new_tag }}.img
