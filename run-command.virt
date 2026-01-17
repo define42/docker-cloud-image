@@ -1,4 +1,4 @@
-install docker.io
+install docker.io,openssh-server
 
 run-command ln -sf /dev/null /etc/systemd/system/systemd-networkd-wait-online.service
 
@@ -10,6 +10,7 @@ run-command apt-get clean && rm -rf /var/lib/apt/lists/*
 run-command update-grub
 
 run-command systemctl enable docker
+run-command systemctl enable sshd
 
 # Truncate machine-id
 run-command truncate -s 0 /etc/machine-id
