@@ -1,0 +1,15 @@
+install net-tools
+
+run-command ln -sf /dev/null /etc/systemd/system/systemd-networkd-wait-online.service
+
+run-command grub-install --target=i386-pc /dev/sda
+run-command update-grub
+run-command apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Update GRUB and reboot to apply kernel params
+run-command update-grub
+
+# Truncate machine-id
+run-command truncate -s 0 /etc/machine-id
+run-command truncate -s 0 /var/lib/dbus/machine-id
+
